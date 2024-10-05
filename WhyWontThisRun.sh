@@ -1,7 +1,7 @@
 #!/bin/bash
 
 input_encoded="MTAwNTIwMjQ=" 
-output_encoded="SFRIeyhOMHAwYml0eU5vcm1vcnNlTjByZW1vcnNlTjBmZWFy}" 
+output_encoded="NTMgNDYgNTIgNDkgNjUgMzAgMzQgNzcgNjMgNDcgNmMgMzAgNjUgNTUgMzQgNzcgNjMgNmQgNTYgNzQgNjIgMzMgNGEgN2EgNWEgNTUgMzQgNzcgNWEgNmQgNTYgNjggNjMgNmUgMzAgM2Q=" 
 
 # Function to decode base64
 decode_base64() {
