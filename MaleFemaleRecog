@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char gender[10];
+
+    printf("Enter your gender (male/female): ");
+    scanf("%s", gender);
+
+    // Convert input to lowercase for easier comparison
+    for (int i = 0; gender[i]; i++) {
+        gender[i] = tolower(gender[i]);
+    }
+
+    if (strcmp(gender, "male") == 0) {
+        printf("You identified as a man.\n");
+    } else if (strcmp(gender, "female") == 0) {
+        printf("You identified as a woman.\n");
+    } else {
+        printf("Invalid input. Please enter 'male' or 'female'.\n");
+    }
+
+    return 0;
+}
