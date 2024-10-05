@@ -24,7 +24,7 @@ function CaesarCipher {
 }
 
 # Encoded message using a Caesar cipher with a shift of 5
-$encodedMessage = "MWH{S5uD2wT5q6jWj2w5jWq5j2{"
+$encodedMessage = "MWH{S5uD2wT5q6jWj2w5jWq5j2}"
 $shift = -5  # To decode
 
 # Decode the message
