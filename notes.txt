@@ -1,0 +1,7 @@
+Compilation
+You can compile all these files together. Assuming you saved them in a directory, you can use the following command:
+
+gcc -o ai_project main.c neural_network.c activation_functions.c dataset.c training.c utils.c error_calculation.c logger.c
+
+Summary
+This collection provides a foundational structure for creating a simple neural network in C. Each file serves a specific purpose, and you can build upon these ideas by adding functionality, improving the algorithms, and integrating more advanced AI techniques.
