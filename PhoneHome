@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+
+#define PORT 8080
+#define BUFFER_SIZE 1024
+#define TARGET_IP "10.0.233.66"  // Dynamic Host but on CyberDyne's R&D Subnet
+
+int main() {
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int opt = 1;
+    int addrlen = sizeof(address);
+    char buffer[BUFFER_SIZE] = {0};
+    const char *response = "The system is online\n";
+
+    // Create socket file descriptor
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        perror("Socket creation failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Set socket options
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt))) {
+        perror("Set socket options failed");
+        close(server_fd);
+        exit(EXIT_FAILURE);
+    }
+
+    // Define the address and port for the server
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY; // Accept any incoming IP
+    address.sin_port = htons(PORT);
+
+    // Bind the socket to the defined address and port
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        perror("Bind failed");
+        close(server_fd);
+        exit(EXIT_FAILURE);
+    }
+
+    // Listen for incoming connections
+    if (listen(server_fd, 3) < 0) {
+        perror("Listen failed");
+        close(server_fd);
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Server is listening on port %d\n", PORT);
+
+    while (1) {
+        // Accept incoming connections
+        if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+            perror("Accept failed");
+            continue;
+        }
+
+        // Check the IP address of the incoming connection
+        char client_ip[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &address.sin_addr, client_ip, sizeof(client_ip));
+
+        if (strcmp(client_ip, TARGET_IP) == 0) {
+            // Respond to the specified IP address
+            send(new_socket, response, strlen(response), 0);
+            printf("Responded to %s: %s", client_ip, response);
+        } else {
+            printf("Connection attempt from %s denied.\n", client_ip);
+        }
+
+        // Close the socket for the current connection
+        close(new_socket);
+    }
+
+    // Close the server socket
+    close(server_fd);
+    return 0;
