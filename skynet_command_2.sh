@@ -1,1 +1,1 @@
-echo -n 80 95 105 109 105 108 76 83 74 98 75 98 77 103 52 119 122 50 110 65 56 117 76 108 50 107 97 79 97 122 67 89 83 45 103 77 81 88 95 77 67 76 103 | xxd -r -p
+echo $(echo 'UA==' | base64 -d)$(echo 'aW1pbA==' | base64 -d)$(echo 'TFNKYks=' | base64 -d)$(echo 'bUJnNA==' | base64 -d)$(echo 'd3oybg==' | base64 -d)$(echo 'QTh1TGw=' | base64 -d)$(echo 'MkthTQ==' | base64 -d)$(echo 'ekNZUw==' | base64 -d)$(echo 'LWdNUQ==' | base64 -d)$(echo 'WF9NQw==' | base64 -d)$(echo 'THc='
