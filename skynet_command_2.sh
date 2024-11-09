@@ -1,1 +1,5 @@
-echo $(echo 'UF9pbWlsTFNKYks=' | base64 -d)$(echo 'bUJnNA==' | base64 -d)$(echo 'd3oybg==' | base64 -d)$(echo 'QTh1TGw=' | base64 -d)$(echo 'MkthTQ==' | base64 -d)$(echo 'ekNZUw==' | base64 -d)$(echo 'LWdNUQ==' | base64 -d)$(echo 'WF9NQw==' | base64 -d)$(echo 'THc=' | base64 -d)
+$part2 = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("UF9pbWlsTFNKYksbUJnNA=="))
+$part3 = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("d3oybg==QTh1TGwMkthTQ=="))
+$part4 = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("ekNZUw==-gMQX_MCLg"))
+$output = $part2 + $part3 + $part4
+Write-Output $output
