@@ -1,1 +1,1 @@
-echo -n 48 68 74 74 80 58 47 47 48 50 46 109 105 103 120 47 96 73 52 81 72 90 97 76 46 99 118 109 | xxd -r -p
+echo $(echo 'aHR0cHM6Ly9tZWdhLm56L2ZpbGUv' | base64 -d)$(echo 'c0k0UUhaYUw=' | base64 -d)$(echo 'I1BfaW1pbExTSmJLYk1nNHd6Mm5BOHVMbDJrYU9hekNZUy1nTVFYX01DTHc=' | base64 -d)
